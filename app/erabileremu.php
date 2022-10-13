@@ -22,7 +22,7 @@ if(isset($_POST['aukerak']))
             // DATALD LIBZER O LIBDATALD
             // Y DEPENDIENDO DE ESO REENVIARLO A EL PHP CORRESPONDIENTE
     
-            if($value == "libzer")
+            if($value == "altzer")
             {
                 header("Location: http://localhost:81/libzerrikusi.php");
     
@@ -104,16 +104,9 @@ else{
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EHU Liburutegia - Erabiltzaile</title>
+    <title>ALTZARIAK - Erabiltzaile</title>
     <link rel="stylesheet" href="styleerab.css?v=<?php echo time(); ?>">
 </head>
-
-
-
-
-<div class="irudia">
-    <img src="User.png" alt="" width="300" height="200">
-</div>
 
 <div class="content">
 
@@ -123,7 +116,7 @@ else{
         <table>
             <tr>
                 <td>&nbsp;</td>
-                <td><p style="background-color: lightblue"><strong> LIBURUTEGIA </strong></p></td>
+                <td><p style="background-color: lightblue"><strong> ALTZARIAK </strong></p></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -150,9 +143,9 @@ else{
                         <td>&nbsp;</td>
                         <td><select id="aukeratu"name="aukerak[]" required> 
                             <option value="">Ikusi zure aukerak hemen.</option>
-                            <option value="libzer">Liburuen zerrenda ikusi.</option> 
+                            <option value="altzer">Altzarien zerrenda ikusi.</option> 
                             <option value="datAld">Nire datuak aldatu.</option> 
-                            <option value="libDatAld">Liburu baten datuak aldatu.</option>
+                            <option value="altDatAld">Altzari baten datuak aldatu.</option>
                         </select></td>
                         <td><input id="aukeratuBotoia" type="submit" name="Aukeratu" value="Aukeratu" title="Desplegablearen aukera bat sartu eta sakatu." /></td>
                     </tr>

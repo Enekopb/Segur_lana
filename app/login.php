@@ -30,34 +30,14 @@
         if($pasahitza == $pasahitzaBer){
             // Komandoa prestatu
 
-            /* 
-            $db = new mysqli("db", "admin", "test", "database");
-            $sql = "SELECT * FROM liburu;";
-            $stmt = $db->prepare($sql);
-            $stmt->execute();
-            //grab a result set
-            $resultSet = $stmt->get_result();
-            //pull all results as an associative array
-            $liburuak = $resultSet->fetch_all();
-            foreach($liburuak as $libro) { */
+           
 
             //echo("1");
             $db = new mysqli("db", "admin", "test", "database");
             $statement = $db->prepare("select * from erabiltzaile where erabIz = ?");
             $statement->bind_param("s", $erabIz);
             $emaitza = $statement->execute();
-            //echo("2");
-            /*
-
-
-
-            $sql ="SELECT * FROM `erabiltzaile` WHERE `erabIz` = '$erabIzena'"; // Hau da konprobatzeko ea erabiltzaile izen hori hartuta dagoen edo ez.
-            $query = mysqli_query($con,$sql);
-            $nr = mysqli_num_rows($query); // nr (number rows) aldagaia 1 izango da erabiltzailea aurkitu badu eta 0 ez badu aurkitu.
-            $row = mysqli_fetch_array($query); // Ez badago, row NULL balioa izango du. Eta sartu ahal dugu. Bestela, erabiltzaileizena emango digu.
-
-             */
-    
+            //echo("2");  
           
     
         }
@@ -116,7 +96,7 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input id="sesioahasi" type="button" name="sesioahasi" value="Sesioa hasi" title="Eremu guztiak betetakoan sakatu" onclick="pswSecure()" /></td>
+                <td><input id="sesioahasi" type="button" name="sesioahasi" value="Sesioa hasi" title="Eremu guztiak betetakoan sakatu" onclick="sesioHasi()" /></td>
                 <td>&nbsp;</td>
             </tr>
         </table>

@@ -29,12 +29,6 @@ function sesioaHasieratu()
     }
 }
 
-function pswSecure() {
-    var pasahitza = document.getElementById('pasahitza').value;
-    if (/^(?=.*[A-Z].*[A-Z])(?=.*[!@#$&*])(?=.*[0-9].*[0-9])(?=.*[a-z].*[a-z].*[a-z]).{8}$/.test(pasahitza)) {
-        //alert("Pasahitza ona wwey");
-        document.getElementById('loginak').submit();
-    } else {
-        alert("Pasahitza ez segurua");
-    }
+function sesioHasi() {
+    document.getElementById('loginak').submit();
 }

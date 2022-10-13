@@ -20,7 +20,7 @@ Session_start();
 
     if(isset($_POST['sesioahasi'])) // Sesioa hasi botoia ematen denean
     {
-        if(($nr == 1)&&(password_verify($pasahitza, $row['pasahitza']))){  // nr 1 bada (hau da, erabiltzailea existitzen bada) eta pasahitza ondo badago
+        if(($nr == 1)){  // nr 1 bada (hau da, erabiltzailea existitzen bada) eta pasahitza ondo badago
             $_SESSION['erabIz'] = $erabIz;  // Session aldagaian gordetzen dugu erabiltzailearen nickname-a
             header("Location: http://localhost:81/erabileremu.php"); // erabiltzaile eremura goaz
             exit;      
