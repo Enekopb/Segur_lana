@@ -3,16 +3,6 @@
 
     session_start(); // Session global variable erabili ahal izateko
 
-
-    //Aldez aurretik index-etik lortutako aldagaik baditugu, orain erabiltzaile izena eta pasahitza lortuko ditugu
-    
-    /*$izena = $_SESSION['izena'];
-    $pasahitza = $_SESSION['Pasahitza'];
-    $nan = $_SESSION['nan'];
-    $jdat =  $_SESSION['jaiodata'];
-    $nan = $_SESSION['nan'];
-    $tel = $_SESSION['telf'];*/
-
     $izena = $_SESSION['izena'];
     $nan = $_SESSION['nan'];
     $jaioData = $_SESSION['jaiodata'];
@@ -27,10 +17,7 @@
         $pasahitza= $_POST['pasahitza'];
         $pasahitzaBer= $_POST['pasahitzaBer'];
 
-        if($pasahitza == $pasahitzaBer){
-            // Komandoa prestatu
-
-           
+        if($pasahitza == $pasahitzaBer){     
 
             //echo("1");
             $db = new mysqli("db", "admin", "test", "database");
@@ -39,7 +26,26 @@
             $emaitza = $statement->execute();
             //echo("2");  
           
-    
+            if ($emaitza) 
+            {   
+
+                $db = new mysqli("db", "admin", "test", "database");
+                $stmt = $db->prepare("insert into erabiltzaile (erabIz, pasahitza, izena, abizena, telefonoa, nan, jaioData, emaila, bankuZenb) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("ssssisssi", $erabIz, $pasahitza, $izena, $abizena, $telefonoa, $nan, $jaioData, $emaila, $bankEnk);
+                $bool = $stmt->execute();
+
+
+                if ($bool)
+                { // arrakasta badu sententzia, hemen sartuko da
+                    // hemen sartu behar ditugu datuak log taulan (arrakastatsua bai)
+                    header("Location: http://localhost:81/erabileremu.php");
+                    exit;
+                }else{
+                    echo "ERROREA: Ezin izan dira datuak ondo sartu DBan.";
+                }else {
+                alert("ERROREA: Sartutako erabiltzailea existitzen da, saiatu beste batekin!!"); 
+                }
+            }
         }
     } 
 
