@@ -29,6 +29,7 @@ SET time_zone = "+00:00";
 
 CREATE TABLE `Erabiltzaileak` (
 `NAN` varchar(9) NOT NULL,
+`Pasahitza` varchar(20) NOT NULL,
 `Izen Abizena` varchar(30) NOT NULL,
 `Telefono zenbakia` int(9) NOT NULL,
 `Jaiotze Data` date NOT NULL,
@@ -40,7 +41,7 @@ CREATE TABLE `Erabiltzaileak` (
 -- Volcado de datos para la tabla `Erabiltzaileak`
 --
 
-INSERT INTO `Erabiltzaileak`(`NAN`, `Izen Abizena`, `Telefono zenbakia`, `Jaiotze Data`, `Email`, `Pasahitza`) VALUES 
+INSERT INTO `Erabiltzaileak`(`NAN`, `Pasahitza`,`Izen Abizena`, `Telefono zenbakia`, `Jaiotze Data`, `Email`, `Pasahitza`) VALUES 
 ('72319114F', 'Eneko Perez', '635843254','18-08-2002', 'eperez151@ikasle.ehu.eus', 'enekoBasau1');
 
 -- --------------------------------------------------------
@@ -65,6 +66,18 @@ CREATE TABLE `Altzariak` (
 INSERT INTO `Altzariak`(`IdProduktu`, `Izena`, `Kolorea`, `Mota`, `Prezioa`, `Tamaina`) VALUES 
 ('1','Smallen', 'Beltza', 'Aulkia','30€', '80cm x 50cm x 50cm');
 
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `log`
+--
+
+CREATE TABLE `log` (
+  `erabIzena` varchar(30) NOT NULL,
+  `saiakeraOrdua` datetime NOT NULL,
+  `arrakastatsua` int(1) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
 --
 -- Índices para tablas volcadas
 --
@@ -74,15 +87,20 @@ INSERT INTO `Altzariak`(`IdProduktu`, `Izena`, `Kolorea`, `Mota`, `Prezioa`, `Ta
 --
 ALTER TABLE `Erabiltzaileak`
   ADD PRIMARY KEY (`NAN`);
-COMMIT;
-
 
 --
 -- Indices de la tabla `Altzariak`
 --
 ALTER TABLE `Altzariak`
   ADD PRIMARY KEY (`IdProduktu`);
+
+--
+-- Indices de la tabla `log`
+-- 
+ALTER TABLE `log`
+  ADD PRIMARY KEY (`erabIzena`);
 COMMIT;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
