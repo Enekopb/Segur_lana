@@ -30,19 +30,19 @@ SET time_zone = "+00:00";
 CREATE TABLE `Erabiltzaileak` (
 `NAN` varchar(9) NOT NULL,
 `Pasahitza` varchar(20) NOT NULL,
-`Izen Abizena` varchar(30) NOT NULL,
-`Telefono zenbakia` int(9) NOT NULL,
-`Jaiotze Data` date NOT NULL,
+`IzenAbizena` varchar(30) NOT NULL,
+`TelefonoZenbakia` int(9) NOT NULL,
+`JaiotzeData` date NOT NULL,
 `Email` varchar(30) NOT NULL,
-`Pasahitza`varchar(30) NOT NULL
+`ErabId`varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Volcado de datos para la tabla `Erabiltzaileak`
 --
 
-INSERT INTO `Erabiltzaileak`(`NAN`, `Pasahitza`,`Izen Abizena`, `Telefono zenbakia`, `Jaiotze Data`, `Email`, `Pasahitza`) VALUES 
-('72319114F', 'Eneko Perez', '635843254','18-08-2002', 'eperez151@ikasle.ehu.eus', 'enekoBasau1');
+INSERT INTO `Erabiltzaileak`(`NAN`,`IzenAbizena`, `TelefonoZenbakia`, `JaiotzeData`, `Email`, `Pasahitza`,`ErabId`) VALUES 
+('72319114F', 'Eneko Perez', '635843254','2002/08/18', 'eperez151@ikasle.ehu.eus', 'enekoBasau1','eneko05');
 
 -- --------------------------------------------------------
 
@@ -86,7 +86,7 @@ CREATE TABLE `log` (
 -- Indices de la tabla `Erabiltzaileak`
 --
 ALTER TABLE `Erabiltzaileak`
-  ADD PRIMARY KEY (`NAN`);
+  ADD PRIMARY KEY (`ErabId`);
 
 --
 -- Indices de la tabla `Altzariak`

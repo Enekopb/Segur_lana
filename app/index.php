@@ -81,12 +81,12 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input class="form-control" id="jaioData" type="text" name="jaioData" placeholder="Jaiodata" pattern="[0-9]{4}[/]{1}[0-9]{2}[/]{1}[0-9]{2}" title="UUUU/HH/EE   ADB: 2002/03/08" required/></td>
+                <td><input class="form-control" id="jaiodata" type="date" name="jaiodata" placeholder="Jaio data" pattern="[0-9]{4}[/]{1}[0-9]{2}[/]{1}[0-9]{2}" title="UUUU/HH/EE   ADB: 2002/03/08" required/></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input class="form-control" id="nan" type="text" name="nan" placeholder="nan" pattern="[0-9]{8}[A-Za-z]{1}" maxlenght="9"title="8 zenbaki eta letra1. ADB: 55259874k" required/></td>
+                <td><input class="form-control" id="nan" type="text" name="nan" placeholder="nan" pattern="[0-9]{8}[A-Za-z]{1}" maxlenght="9"title="8 zenbaki eta letra larri 1. ADB: 55259874K" required/></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

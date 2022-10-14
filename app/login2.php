@@ -11,9 +11,9 @@ Session_start();
     $pasahitza= $_POST['pasahitza'];
     //$pasahitza .= "segurtasuna"; // Gatza sartzen diogu pasahitzari
     // ez da beharrezkoa gatza sartzea password_hash() funtzioak sortzen baitu
-    $pasahitza_hasheatuta = password_hash($pasahitza, PASSWORD_DEFAULT); // hasheatzen dugu pasahitza eta gatza
+    //$pasahitza_hasheatuta = password_hash($pasahitza, PASSWORD_DEFAULT); // hasheatzen dugu pasahitza eta gatza
 
-    $sql ="SELECT * FROM `erabiltzaile` WHERE `erabIz` = '$erabIz'";
+    $sql ="SELECT * FROM `Erabiltzaileak` WHERE `erabId` = '$erabIz'";
     $query = mysqli_query($con,$sql);
     $nr = mysqli_num_rows($query); // nr aldagaian 1 erabiltzailea aurkitu bada 0 erabiltzailea ez bada aurkitu
     $row = mysqli_fetch_array($query);

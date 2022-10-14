@@ -21,7 +21,7 @@
 
             //echo("1");
             $db = new mysqli("db", "admin", "test", "database");
-            $statement = $db->prepare("select * from erabiltzaile where erabIz = ?");
+            $statement = $db->prepare("SELECT * FROM Erabiltzaileak WHERE ErabId = ?");
             $statement->bind_param("s", $erabIz);
             $emaitza = $statement->execute();
             //echo("2");  
@@ -30,10 +30,9 @@
             {   
 
                 $db = new mysqli("db", "admin", "test", "database");
-                $stmt = $db->prepare("insert into erabiltzaile (erabIz, pasahitza, izena, abizena, telefonoa, nan, jaioData, emaila, bankuZenb) values (?, ?, ?, ?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("ssssisssi", $erabIz, $pasahitza, $izena, $abizena, $telefonoa, $nan, $jaioData, $emaila, $bankEnk);
+                $stmt = $db->prepare("INSERT INTO Erabiltzaileak(ErabId, Pasahitza, IzenAbizena, TelefonoZenbakia, NAN, JaiotzeData, Email) values (?, ?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("sssisds",$erabIz, $pasahitza, $izena, $telefonoa, $nan, $jaioData, $email);
                 $bool = $stmt->execute();
-
 
                 if ($bool)
                 { // arrakasta badu sententzia, hemen sartuko da
@@ -42,10 +41,12 @@
                     exit;
                 }else{
                     echo "ERROREA: Ezin izan dira datuak ondo sartu DBan.";
-                }else {
-                alert("ERROREA: Sartutako erabiltzailea existitzen da, saiatu beste batekin!!"); 
                 }
             }
+            else {
+            alert("ERROREA: Sartutako erabiltzailea existitzen da, saiatu beste batekin!!"); 
+            }
+            
         }
     } 
 

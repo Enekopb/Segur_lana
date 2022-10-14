@@ -6,14 +6,14 @@ session_start();
 
 if(isset($_POST['aukerak']))
 {
-    if((time() - $_SESSION['azken_kon']) > 60) {
+    /*if((time() - $_SESSION['azken_kon']) > 60) {
         // SAIOA ITXI NAHI BADU
         session_start();
         session_destroy();
         header("Location: http://localhost:81/index.php");
         exit;
     }
-    else{
+    else{*/
         $auk = $_POST['aukerak'];
         $_SESSION['azken_kon'] = time();
         foreach ($auk as $value)
@@ -24,21 +24,21 @@ if(isset($_POST['aukerak']))
     
             if($value == "altzer")
             {
-                header("Location: http://localhost:81/libzerrikusi.php");
+                header("Location: http://localhost:81/altzerrikusi.php");
     
             }elseif($value == "datAld")
             {
                 header("Location: http://localhost:81/datuakEditatu.php");
-            }elseif($value == "libDatAld")
+            }elseif($value == "altDatAld")
             {
-                header("Location: http://localhost:81/libDatuakAldatu.php");
+                header("Location: http://localhost:81/altDatuakAldatu.php");
             }else
             {
-                echo "na de na";
+                echo "Ezer";
             }
             exit;
         }
-    }
+    //}
 }elseif(isset($_POST['bueltatuBot']))
 {
     // SAIOA ITXI NAHI BADU
@@ -51,44 +51,6 @@ if(isset($_POST['aukerak']))
 {
     //EZER
 }
-
-
-
-
-
-
-
-
-// ESTO DE ABAJO EN VD SUDA SI LO HACE O NO PERO VIENE BIEN TENERLO PA BASARNOS EN ELLO
-
-/*$query = "SELECT * FROM erabiltzaile";
-$result = mysqli_query($con, $query);
-
-
-if($result-> num_rows > 0){ // Si el query da mas de 0 erabiltzailes... (como deberia)
-    while($row = mysqli_fetch_array($result)){ // Pasa por todas las rows
-
-        $erabIz= $row["erabIz"];
-        $email = $row["emaila"];
-
-
-
-
-        
-        
-        // **************************** FALTA METER EN EL ECHO EL NICKNAME Y EL MAIL BIEN *************************************************
-
-        echo "<tr><td>" . $erabIz . "</td>  <td>" . $email . "</td></tr>";
-    }
-
-
-}
-else{
-    echo "0 emaitza";
-}
-*/
-
-
 
 ?>
 
@@ -111,7 +73,7 @@ else{
 <div class="content">
 
     <!-- Web Orriaren gorputza-->
-<body background="https://cdn.pixabay.com/photo/2016/02/16/21/07/books-1204029__340.jpg?__cf_chl_jschl_tk__=pmd_rg0UyIVTKotZFzKXG6L7RTRiwJwdw6vwz3E1204eRgg-1635866096-0-gqNtZGzNAjujcnBszQhR">
+<body background="banner.jpg">
     <div class="hasiera">
         <table>
             <tr>

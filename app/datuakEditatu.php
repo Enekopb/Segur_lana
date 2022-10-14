@@ -13,7 +13,7 @@
 
         // Begiratzen dugu ea erabiltzailea eta pasahitza ondo sartu dituen...
 
-        $sql = "SELECT * FROM `erabiltzaile` WHERE `erabIz` = '$erabIzena'"; // Bilatzen dugu erabiltzailea DB-an.
+        $sql = "SELECT * FROM `Erabiltzaileak` WHERE `erabIz` = '$erabIzena'"; // Bilatzen dugu erabiltzailea DB-an.
         $query = mysqli_query($con,$sql);
         $nr = mysqli_num_rows($query);
         $row = mysqli_fetch_array($query); // Ez badago, $row null, bestela array bat izango da datuekin.
@@ -29,9 +29,8 @@
                 // UPDATE agenda SET telefono='662142223' , email='albesanch@mimail.com' WHERE nombre='Alberto Sanchez'
                 // Falta hacer el update aqui
                 $iz = $_POST['izena'];
-                $ab = $_POST['abizena'];
                 $mail = $_POST['emaila'];
-                $sql = "UPDATE `erabiltzaile` SET izena='$iz', abizena='$ab', emaila='$mail' WHERE `erabIz` = '$erabIzena'";
+                $sql = "UPDATE `Erabiltzaileak` SET Izen Abizena='$iz', Email='$mail' WHERE `erabIz` = '$erabIzena'";
                 if(mysqli_query($con,$sql)) // Ondo exekutatu bada hemen sartuko da.
                 {
                     echo "ZURE DATUAK ONDO ALDATU DIRA!!";
@@ -42,7 +41,7 @@
             }
         }
 
-        $query = "SELECT * FROM erabiltzaile where erabIz ='$erabIzena'";
+        $query = "SELECT * FROM Erabiltzaileak where erabIz ='$erabIzena'";
         $result = mysqli_query($con, $query);
     
     
@@ -50,17 +49,13 @@
             
         //Datuak gorde
         $row = mysqli_fetch_array($result);
-        $erabIzena= $row['erabIz'];
+        $nan = $row["nan"];
         $pasahitza= $row["pasahitza"];
         $izena = $row["izena"];
-        $abizena = $row["abizena"];
-        $emaila = $row["emaila"];
-        $jdat =  $row["jaioData"];
-        $nan = $row["nan"];
         $tel = $row["telefonoa"];
-
-
-
+        $jdat =  $row["jaioData"];
+        $emaila = $row["emaila"];
+        $erabIzena= $row['erabIz'];
 
     }
     
@@ -79,29 +74,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIBURU BAT SARTU</title>
+    <title>ALTZARI BAT SARTU</title>
     <link rel="stylesheet" href="styles.css"?v=<?php echo time(); ?>">
 </head>
 
 <script type=“text/javascript” src="script2.js" ></script>
 
 
-<!--<div class="irudia">
-    <img src="https://media.istockphoto.com/photos/blue-book-picture-id1281955543?b=1&k=20&m=1281955543&s=170667a&w=0&h=ZmwacrjQewEU3RqJLYufA-Bi7JVOI2JgcB8X0o7vPeI=" alt="" width="300" height="200">
-</div>
-
-<div class="content">-->
-
-
 
     <!-- Web Orriaren gorputza-->
-<body background="Liburuak.webp">
+<body background="banner.jpg">
     <div class="content">
         <div class="hasiera">
             <table>
                 <tr>
                     <td>&nbsp;</td>
-                    <td><p style="background-color: lightblue"><strong> LIBURUTEGIA </strong></p></td>
+                    <td><p style="background-color: lightblue"><strong> ALTZARI DENDA </strong></p></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
@@ -112,7 +100,7 @@
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td><p style="background-color: lightblue"> Hemen datuak aldatu dezakezu, horretarako sartu zure erabiltzailea pasahitza eta gero "izena", "abizena" eta "emaila" aldatzeko sartu ezazu berria. </p></td>
+                    <td><p style="background-color: lightblue"> Hemen datuak aldatu dezakezu, horretarako sartu zure erabiltzailea eta pasahitza. Nahi dituzun izena eta emaila aldatzeko sartu ezazu berria. </p></td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
@@ -123,11 +111,10 @@
             <tr>
 		        <th>ErabIz </th>
 		        <th>Izena</th>
-		        <th>Abizena</th>
 		        <th>Emaila</th>
 	        </tr>
             <?php
-                echo "<tr><td id ='erabiltzaile izena'>" . $erabIzena .  "</td><td id = 'izena'>" . $izena . "</td></td><td id = 'abizena'>" . $abizena . "</td></td><td id = 'emaila'>" . $emaila . "</td></td><td id = 'jaiotze data'>";
+                echo "<tr><td id ='erabiltzaile izena'>" . $erabIzena .  "</td><td id = 'izena'>" . $izena . "</td></td><td id = 'emaila'>" . $emaila . "</td></td><td id = 'jaiotze data'>";
             ?>
         </table>
     </div>
@@ -148,11 +135,6 @@
             <tr>
                 <td>&nbsp;</td>
                 <td><input id="izena" type="text" name="izena" placeholder="Izena Sartu"  title="Zure izena sartu." required/></td>
-                <td>&nbsp;</td>
-            </tr>
-            <tr>
-                <td>&nbsp;</td>
-                <td><input id="abizena" type="text" name="abizena" placeholder="Abizena Sartu" title="Zure abizena idatzi." required/></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
