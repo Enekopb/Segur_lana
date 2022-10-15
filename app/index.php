@@ -81,7 +81,7 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input class="form-control" id="jaiodata" type="date" name="jaiodata" placeholder="Jaio data" pattern="[0-9]{4}[/]{1}[0-9]{2}[/]{1}[0-9]{2}" title="UUUU/HH/EE   ADB: 2002/03/08" required/></td>
+                <td><input class="form-control" id="jaiodata" type="text" name="jaiodata" placeholder="Jaio data" pattern="[0-9]{4}[/]{1}[0-9]{2}[/]{1}[0-9]{2}" title="UUUU/HH/EE   ADB: 2002/03/08" required/></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>

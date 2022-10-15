@@ -17,7 +17,7 @@ require 'dbkon.php'; //DBarekin konexioa egitea beharrezkoa baita
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LIBURUEN ZERRENDA</title>
+    <title>ALTZARIEN ZERRENDA</title>
     <link rel="stylesheet" href="styles.css">
 </head>
 
@@ -38,7 +38,7 @@ require 'dbkon.php'; //DBarekin konexioa egitea beharrezkoa baita
         <table>
             <tr>
                 <td>&nbsp;</td>
-                <td><p style="background-color: lightblue"><strong> LIBURUEN ZERRENDA </strong></p></td>
+                <td><p style="background-color: lightblue"><strong> ALTZARIEN ZERRENDA </strong></p></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
@@ -54,7 +54,7 @@ require 'dbkon.php'; //DBarekin konexioa egitea beharrezkoa baita
     <?php
 
                 $db = new mysqli("db", "admin", "test", "database");
-                $sql = "SELECT * FROM Altzariak;";
+                $sql = "SELECT * FROM Altzariak";
                 $stmt = $db->prepare($sql);
                 $stmt->execute();
                 //grab a result set
@@ -68,11 +68,12 @@ require 'dbkon.php'; //DBarekin konexioa egitea beharrezkoa baita
     <div class="php">
         <table id = "altzariTabala" class = "table-striped table-bordered" style = "width:100%">
             <thead class = "text-center">    
-		        <th>Altzari Izena </th>
+		        <th>Id produktu </th>
+		        <th>Izena</th>
 		        <th>Kolorea</th>
 		        <th>Mota</th>
 		        <th>Prezioa</th>
-		        <th>Tamaina</th>
+                <th>Tamaina</th>
 	        </thead>
 
             <tbody>
@@ -82,6 +83,7 @@ require 'dbkon.php'; //DBarekin konexioa egitea beharrezkoa baita
                     <td><?php echo $altzari[2]?></td>
                     <td><?php echo $altzari[3]?></td>
                     <td><?php echo $altzari[4]?></td>
+                    <td><?php echo $altzari[5]?></td>
                 </tr>
 
                 <?php } ?>

@@ -5,34 +5,29 @@
     Session_start();
 
     $altID = $_POST['altID'];
-    $altIzena = $_POST['altIzena'];
-    $altKolorea = $_POST['altKolorea'];
-    $altMota = $_POST['altMota'];
-    $altPrezioa = $_POST['altPrezioa'];
-    $altTamaina = $_POST['altTamaina'];
 
-    if(isset($_POST['sartuBotoia'])) // Altzari bat sartzen saiatzen badira..
+    if(isset($_POST['ezabatuBotoia'])) // Altzari bat ezabatzen saiatzen badira..
     {
         // Ikusiko dugu lehenik ea altzari hori datubasean badagoen ala ez.
 
-        $sql = "SELECT * FROM `Altzariak` WHERE `Mota` = '$altMota'";
+        $sql = "SELECT * FROM `Altzariak` WHERE `IdProduktu` = '$altID'";
         $query = mysqli_query($con,$sql);
         $row = mysqli_fetch_array($query);
 
-        if($row == NULL) // Hau betetzen bada esan nahi du altzaria datu basean ez dagoela eta sartu ahal dugula
+        if($row != NULL) // Hau betetzen bada esan nahi du altzaria datu basean dagoela eta ezabatu ahal dugula
         {
-            $sql = "INSERT INTO Altzariak (IdProduktu, Izena, Kolorea, Mota, Prezioa, Tamaina) VALUES ('$altID', '$altIzena', '$altKolorea', '$altMota','$altPrezioa','$altTamaina')";
+            $sql = "DELETE FROM `Altzariak` WHERE `IdProduktu` = '$altID'";
             if (mysqli_query($con,$sql))
             {
-                echo "Altzaira sartu egin da.";
+                echo "Altzaria ezabatu egin da.";
             }
             else{
-                echo "Altzaria sartzean errore bat egon da.";
+                echo "Altzaria ezabatzean errore bat egon da.";
             }
 
         }else
         {
-            echo "Altzaria ezin da sartu datu basean dagoelako!";
+            echo "Altzaria ezin da ezabatu, datu basean existitzen ez dagoelako!";
         }
     }
 
@@ -53,7 +48,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ALTZARI BAT SARTU</title>
+    <title>ALTZARI BAT EZABATU</title>
     <link rel="stylesheet" href="styles.css"?v=<?php echo time(); ?>>
 </head>
 
@@ -80,18 +75,18 @@
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td><p style="background-color: lightblue"><strong> <Label>ALTZARI BAT SARTU</Label> </strong></p></td>
+                    <td><p style="background-color: lightblue"><strong> <Label>ALTZARI BAT EZABATU</Label> </strong></p></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td><p style="background-color: lightblue"><strong> Altzarieren datuak sartu ezazu. </strong></p></td>
+                    <td><p style="background-color: lightblue"><strong> Nahi duzun altzariaren Id-a sartu. </strong></p></td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
         </div>
         <div class="inputak">
-            <form action="altSartuDB.php" method="POST">
+            <form action="altEzabatuDB.php" method="POST">
             <table>
             <tr>
                     <td>&nbsp;</td>
@@ -100,32 +95,7 @@
                 </tr>
                 <tr>
                     <td>&nbsp;</td>
-                    <td><input name="altIzena" id="altIzena" type="text"  placeholder="Altzariaren Izena" title="Altzariaren Izena, ADB: Sklum"required/></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><input id="altKolorea" type="text" name="altKolorea" placeholder="Kolorea"  title="Altzariaren Kolorea, ADB: Zuria" required/></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><input id="altMota" type="text" name="altMota" placeholder="Altzari mota" title="Altzariaren mota, ADB: Ohea" required/></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><input id="altPrezioa" type="text" name="altPrezioa" placeholder="Altzariaren prezioa" title="Altzariaren prezioa, ADB: 300$"required/></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><input id="altTamaina" type="text" name="altTamaina" placeholder="Altzariaren dimentsioa" title="Altzariaren dimentsioak, ADB: 50 x 50 x 80"required/></td>
-                    <td>&nbsp;</td>
-                </tr>
-                <tr>
-                    <td>&nbsp;</td>
-                    <td><input id="sartuBotoia" type="submit" name="sartuBotoia" value="Datu Basean Sartu"></td>
+                    <td><input id="ezabatuBotoia" type="submit" name="ezabatuBotoia" value="Datu Basetik ezabatu"></td>
                     <td>&nbsp;</td>
                 </tr>
                 <tr>

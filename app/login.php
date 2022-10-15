@@ -1,7 +1,7 @@
 <?php
     require 'dbkon.php'; //DBarekin konexioa egitea beharrezkoa baita
 
-    session_start(); // Session global variable erabili ahal izateko
+    Session_start(); // Session global variable erabili ahal izateko
 
     $izena = $_SESSION['izena'];
     $nan = $_SESSION['nan'];
@@ -11,6 +11,7 @@
 
     if(isset($_POST['sesioahasi']))
     {
+        echo "1.pausua";
         $_SESSION['erabIzena'] = $_POST['erabIzena'];
         $_SESSION['pasahitza'] = $_POST['pasahitza'];
         $erabIz= $_POST['erabIzena'];
@@ -19,20 +20,30 @@
 
         if($pasahitza == $pasahitzaBer){     
 
-            //echo("1");
+            
+            echo "1";
             $db = new mysqli("db", "admin", "test", "database");
             $statement = $db->prepare("SELECT * FROM Erabiltzaileak WHERE ErabId = ?");
             $statement->bind_param("s", $erabIz);
-            $emaitza = $statement->execute();
+            $statement->execute();
+            $emaitza = $statement->get_result();
+            $data = $emaitza->fetch_assoc();
             //echo("2");  
           
-            if ($emaitza) 
+            if ($db->affected_rows == 0) 
             {   
 
                 $db = new mysqli("db", "admin", "test", "database");
-                $stmt = $db->prepare("INSERT INTO Erabiltzaileak(ErabId, Pasahitza, IzenAbizena, TelefonoZenbakia, NAN, JaiotzeData, Email) values (?, ?, ?, ?, ?, ?, ?)");
-                $stmt->bind_param("sssisds",$erabIz, $pasahitza, $izena, $telefonoa, $nan, $jaioData, $email);
-                $bool = $stmt->execute();
+                $stmt = $db->prepare("INSERT INTO Erabiltzaileak(ErabId, Pasahitza, IzenAbizena, TelefonoZenbakia, NAN, JaiotzeData, Email) VALUES (?, ?, ?, ?, ?, ?, ?)");
+                $stmt->bind_param("sssisss",$erabIz, $pasahitza, $izena, $telefonoa, $nan, $jaioData, $email);
+                $erabIz = $_SESSION['erabIzena'];
+                $pasahitza = $_SESSION['pasahitza'];
+                $izena = $_SESSION['izena'];
+                $telefonoa = $_SESSION['telefonoa'];
+                $nan = $_SESSION['nan'];
+                $jaioData = $_SESSION['jaiodata'];
+                $email = $_SESSION['email'];
+                $bool = $stmt->execute(); 
 
                 if ($bool)
                 { // arrakasta badu sententzia, hemen sartuko da
@@ -103,7 +114,7 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input id="sesioahasi" type="button" name="sesioahasi" value="Sesioa hasi" title="Eremu guztiak betetakoan sakatu" onclick="sesioHasi()" /></td>
+                <td><input id="sesioahasi" type="button" name="sesioahasi" value="Sesioa hasi" title="Eremu guztiak betetakoan sakatu" onclick="sesioHasi()"/></td>
                 <td>&nbsp;</td>
             </tr>
         </table>

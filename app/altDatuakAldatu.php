@@ -9,11 +9,13 @@
         $x = $_POST['auk'];
         foreach($x as $value)
         {
-            if($value == 'sartu') // Liburu bat sartu datu basean.
+            if($value == 'sartu') // Altzari bat sartu datu basean.
             {
                 header("Location: http://localhost:81/altSartuDB.php");
-            }elseif($value == 'aldatu'){ // Liburu baten datuak aldatu.
+            }elseif($value == 'aldatu'){ // Altzari baten datuak aldatu.
                 header("Location: http://localhost:81/altEditatuDB.php");
+            }elseif($value == 'ezabatu'){ // Altzari baten datuak aldatu.
+                header("Location: http://localhost:81/altEzabatuDB.php");
             }
             else{
                 echo 'ERROREA';
@@ -86,6 +88,7 @@
                             <option value="">Ikusi zure aukerak hemen.</option>
                             <option value="sartu">Altzari bat sartu datu basean.</option> 
                             <option value="aldatu">Altzari baten datuak aldatu.</option> 
+                            <option value="ezabatu">Altzari baten datuak ezabatu.</option> 
                         </select>
                         <td>&nbsp;</td>
                     </tr>

@@ -32,7 +32,7 @@ CREATE TABLE `Erabiltzaileak` (
 `Pasahitza` varchar(20) NOT NULL,
 `IzenAbizena` varchar(30) NOT NULL,
 `TelefonoZenbakia` int(9) NOT NULL,
-`JaiotzeData` date NOT NULL,
+`JaiotzeData` varchar(11) NOT NULL,
 `Email` varchar(30) NOT NULL,
 `ErabId`varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
