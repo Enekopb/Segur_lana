@@ -42,7 +42,7 @@ CREATE TABLE `Erabiltzaileak` (
 --
 
 INSERT INTO `Erabiltzaileak`(`NAN`,`IzenAbizena`, `TelefonoZenbakia`, `JaiotzeData`, `Email`, `Pasahitza`,`ErabId`) VALUES 
-('72319114F', 'Eneko Perez', '635843254','2002/08/18', 'eperez151@ikasle.ehu.eus', 'enekoBasau1','eneko05');
+('72319114F', 'Eneko Perez', '635823255','2002/08/18', 'eperez151@ikasle.ehu.eus', 'ep151eneko','eneko05'), ('72335264F', 'Eneko Basauri', '635678254','2002/03/11', 'ebasauri02@ikasle.ehu.eus', 'enekoBasau1','eneko29'), ('72319987F', 'Aimar Larrazabal', '638743222','2002/04/30', 'alarrazabal7@ikasle.ehu.eus', 'larra1234','aimar1');
 
 -- --------------------------------------------------------
 
@@ -64,7 +64,7 @@ CREATE TABLE `Altzariak` (
 --
 
 INSERT INTO `Altzariak`(`IdProduktu`, `Izena`, `Kolorea`, `Mota`, `Prezioa`, `Tamaina`) VALUES 
-('1','Smallen', 'Beltza', 'Aulkia','30€', '80cm x 50cm x 50cm');
+('1','Smallen', 'Beltza', 'Aulkia','30€', '80cm x 50cm x 50cm'), ('2','Bogglen', 'Horia', 'Ohea','60€', '80cm x 150cm x 200cm'), ('1001','Swnick', 'Gorria', 'Mahaia','20€', '100cm x 100cm x 200cm');
 
 -- --------------------------------------------------------
 
