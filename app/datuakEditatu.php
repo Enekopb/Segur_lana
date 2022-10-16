@@ -12,14 +12,14 @@
 
         // Begiratzen dugu ea erabiltzailea eta pasahitza ondo sartu dituen...
 
-        $sql = "SELECT * FROM `Erabiltzaileak` WHERE `ErabId` = '$erabIzena'"; // Bilatzen dugu erabiltzailea DB-an.
+        $sql = "SELECT * FROM `Erabiltzaileak` WHERE `ErabId` = '$erabIzena' AND `Pasahitza` = '$pass'"; // Bilatzen dugu erabiltzailea DB-an.
         $query = mysqli_query($con,$sql);
         $nr = mysqli_num_rows($query);
         $row = mysqli_fetch_array($query); // Ez badago, $row null, bestela array bat izango da datuekin.
 
         if($nr == 0) 
         {
-            echo "Erabiltzaile hori ez dago datu basean, txarto sartu duzu.";
+            echo "Erabiltzaile hori ez dago datu basean, edo pasahitza txarto sartu duzu.";
         }
         else{   
                 $iz = $_POST['izena'];

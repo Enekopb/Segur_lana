@@ -6,7 +6,7 @@
     $erabIz= $_POST['erabIzena'];
     $pasahitza= $_POST['pasahitza'];
 
-    $sql ="SELECT * FROM `Erabiltzaileak` WHERE `erabId` = '$erabIz'";
+    $sql ="SELECT * FROM `Erabiltzaileak` WHERE `erabId` = '$erabIz' AND `Pasahitza` = '$pasahitza'";
     $query = mysqli_query($con,$sql);
     $nr = mysqli_num_rows($query); // nr aldagaian 1 erabiltzailea aurkitu bada 0 erabiltzailea ez bada aurkitu
     $row = mysqli_fetch_array($query);
@@ -18,7 +18,7 @@
             header("Location: http://localhost:81/erabileremu.php"); // erabiltzaile eremura goaz
             exit;      
         }else{
-            echo "ERROREA: Erabiltzaile hori ez da existitzen!!"; 
+            echo "ERROREA: Erabiltzaile hori ez da existitzen edo pasahitza txarto!!"; 
         }
     }
     
