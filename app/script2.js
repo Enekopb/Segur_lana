@@ -15,17 +15,7 @@ function sesioaHasieratu()
         window.alert("Errorea. Sartutako pasahitzak desberdinak dira. ")
     }else // comprobamos si estan en la base de datos
     {
-        //Comprobar si existe el usuario con erabil y usando PHP y la conexion con la BD
-        /*
-        if (dagoeneko existitzen da DBab erabil){
-            errorea, beste erabiltzaile izen bat hautatu
-        }
-        else{
-            document.loginak.submit(); // Informazioa submiteatu
-        }
-        */
-
-
+     
     }
 }
 

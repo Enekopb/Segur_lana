@@ -6,39 +6,26 @@ session_start();
 
 if(isset($_POST['aukerak']))
 {
-    /*if((time() - $_SESSION['azken_kon']) > 60) {
-        // SAIOA ITXI NAHI BADU
-        session_start();
-        session_destroy();
-        header("Location: http://localhost:81/index.php");
+    $auk = $_POST['aukerak'];
+    $_SESSION['azken_kon'] = time();
+    foreach ($auk as $value)
+    {
+        if($value == "altzer")
+        {
+            header("Location: http://localhost:81/altzerrikusi.php");
+
+        }elseif($value == "datAld")
+        {
+            header("Location: http://localhost:81/datuakEditatu.php");
+        }elseif($value == "altDatAld")
+        {
+            header("Location: http://localhost:81/altDatuakAldatu.php");
+        }else
+        {
+            echo "Ezer";
+        }
         exit;
     }
-    else{*/
-        $auk = $_POST['aukerak'];
-        $_SESSION['azken_kon'] = time();
-        foreach ($auk as $value)
-        {
-            // AQUI TENEMOS QUE MIRAR A VER SI EL VALOR $VALUE ES:
-            // DATALD LIBZER O LIBDATALD
-            // Y DEPENDIENDO DE ESO REENVIARLO A EL PHP CORRESPONDIENTE
-    
-            if($value == "altzer")
-            {
-                header("Location: http://localhost:81/altzerrikusi.php");
-    
-            }elseif($value == "datAld")
-            {
-                header("Location: http://localhost:81/datuakEditatu.php");
-            }elseif($value == "altDatAld")
-            {
-                header("Location: http://localhost:81/altDatuakAldatu.php");
-            }else
-            {
-                echo "Ezer";
-            }
-            exit;
-        }
-    //}
 }elseif(isset($_POST['bueltatuBot']))
 {
     // SAIOA ITXI NAHI BADU
@@ -107,7 +94,7 @@ if(isset($_POST['aukerak']))
                             <option value="">Ikusi zure aukerak hemen.</option>
                             <option value="altzer">Altzarien zerrenda ikusi.</option> 
                             <option value="datAld">Nire datuak aldatu.</option> 
-                            <option value="altDatAld">Altzari baten datuak aldatu.</option>
+                            <option value="altDatAld">Altzarien kudeaketa.</option>
                         </select></td>
                         <td><input id="aukeratuBotoia" type="submit" name="Aukeratu" value="Aukeratu" title="Desplegablearen aukera bat sartu eta sakatu." /></td>
                     </tr>

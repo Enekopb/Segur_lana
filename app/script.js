@@ -34,10 +34,5 @@ function datuakKonprobatu(){
     var ktot = k1 + k2 + k3 + k4;
     if (ktot!=4) {
         alert("Kaixo,  " + izena + " " + ", " +  emaila + " postarekin" + " , " +nan+ " zenbakiarekin" +", ez dituzu datuak zuzen sartu.");
-    } else {
-
-        document.getElementById('loginak').submit(); //Así submitea
-    }
-
-    
+    }     
 }

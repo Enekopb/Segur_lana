@@ -69,16 +69,6 @@ INSERT INTO `Altzariak`(`IdProduktu`, `Izena`, `Kolorea`, `Mota`, `Prezioa`, `Ta
 -- --------------------------------------------------------
 
 --
--- Estructura de tabla para la tabla `log`
---
-
-CREATE TABLE `log` (
-  `erabIzena` varchar(30) NOT NULL,
-  `saiakeraOrdua` datetime NOT NULL,
-  `arrakastatsua` int(1) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
 -- Índices para tablas volcadas
 --
 
@@ -94,12 +84,7 @@ ALTER TABLE `Erabiltzaileak`
 ALTER TABLE `Altzariak`
   ADD PRIMARY KEY (`IdProduktu`);
 
---
--- Indices de la tabla `log`
--- 
-ALTER TABLE `log`
-  ADD PRIMARY KEY (`erabIzena`);
-COMMIT;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

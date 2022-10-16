@@ -1,17 +1,10 @@
 <?php
     require 'dbkon.php'; //DBarekin konexioa egitea beharrezkoa baita
 
-
-
-    // para arreglar A1: Ataque inyeccion SQL https://es.stackoverflow.com/questions/18232/c%C3%B3mo-evitar-la-inyecci%C3%B3n-sql-en-php
-
+    session_start();
     
-Session_start();
     $erabIz= $_POST['erabIzena'];
     $pasahitza= $_POST['pasahitza'];
-    //$pasahitza .= "segurtasuna"; // Gatza sartzen diogu pasahitzari
-    // ez da beharrezkoa gatza sartzea password_hash() funtzioak sortzen baitu
-    //$pasahitza_hasheatuta = password_hash($pasahitza, PASSWORD_DEFAULT); // hasheatzen dugu pasahitza eta gatza
 
     $sql ="SELECT * FROM `Erabiltzaileak` WHERE `erabId` = '$erabIz'";
     $query = mysqli_query($con,$sql);

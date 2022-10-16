@@ -24,14 +24,6 @@ require 'dbkon.php'; //DBarekin konexioa egitea beharrezkoa baita
 <script type=“text/javascript” src="script2.js" ></script>
 
 
-<!--<div class="irudia">
-    <img src="https://media.istockphoto.com/photos/blue-book-picture-id1281955543?b=1&k=20&m=1281955543&s=170667a&w=0&h=ZmwacrjQewEU3RqJLYufA-Bi7JVOI2JgcB8X0o7vPeI=" alt="" width="300" height="200">
-</div>
-
-<div class="content">-->
-
-
-
     <!-- Web Orriaren gorputza-->
 <body background="Liburuak.webp">
     <div class="inputak">

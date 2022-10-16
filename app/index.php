@@ -3,32 +3,31 @@
     session_start();
 
     //POSTeko aldagaiak definitu
+    $izena = $_POST['izena'];
+    $nan = $_POST['nan'];
+    $jaiodata = $_POST['jaiodata'];
+    $telefonoa = $_POST['telefonoa'];
+    $email = $_POST['email'];
+    $erabIzena = $_POST['erabIzena'];
+    $pasahitza = $_POST['pasahitza'];
+    $pasahitzaBer = $_POST['pasahitzaBer'];
+    
     if(isset($_POST['erregistratu'])) // 'Erregistratu' botoia zapaldu bada
     {
-        $_SESSION['izena'] = $_POST['izena'];
-        $_SESSION['nan'] = $_POST['nan'];
-        $_SESSION['jaiodata'] = $_POST['jaiodata'];
-        $_SESSION['telefonoa'] = $_POST['telefonoa'];
-        $_SESSION['email'] = $_POST['email'];
-        header("Location: http://localhost:81/login.php");
-        exit;
+
+        if($pasahitza == $pasahitzaBer)
+        {       
+            $sql = "INSERT INTO `Erabiltzaileak`(`NAN`, `Pasahitza`, `IzenAbizena`, `TelefonoZenbakia`, `JaiotzeData`, `Email`, `ErabId`) VALUES ('$nan', '$pasahitza', '$izena', '$telefonoa', '$jaiodata', '$email', '$erabIzena')";
+            if (mysqli_query($con, $sql))
+            { // arrakasta badu sententzia, hemen sartuko da
+                // hemen sartu behar ditugu datuak log taulan (arrakastatsua bai)
+                header("Location: http://localhost:81/login2.php");
+                exit;
+            }else{
+                echo '<script language="javascript">alert("ERROREA: Sartutako erabiltzailea existitzen da, saiatu beste batekin!!");</script>'; 
+            }
+        }
     }
-    
-
-    // EN ESTE DE ABAJO NO SE GUARDAN LOS DATOS Y CREO QUE POR ESO NO VA
-
-    //$izena= $_POST['izena'];
-    //$abizena= $_POST['abizena'];
-    //$emaila= $_POST['emaila'];
-    //$jaiotzeData= $_POST['jaiotzeData'];
-    //$nan= $_POST['nan'];
-    //$telefonoZenbakia= $_POST['telefonoZenbakia'];
-
-    
-    //Hurrengo orrialdera (login.php) eraman
-    
-
-    
     
 ?>
 
@@ -46,8 +45,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Altzariak - Sarrera</title>
-    <link rel="stylesheet" href="styles.css">
-    <script type="text/javascript" src="script.js" defer></script> 
+    <link rel="stylesheet" href="styles.css"?v=<?php echo time(); ?>>
+    <script type="text/javascript" src="script.js"></script> 
 </head>
 
     <!-- Page content -->
@@ -67,7 +66,7 @@
         
     </div>
 
-    <form name="loginak" id="loginak" class="inputak" action="login.php" method="POST" > <!-- Bere buruari parametroak pasa -->
+    <form name="loginak" id="loginak" class="inputak" action="index.php" method="POST" > <!-- Bere buruari parametroak pasa -->
         <table>
             <tr>
                 <td>&nbsp;</td>
@@ -96,7 +95,22 @@
             </tr>
             <tr>
                 <td>&nbsp;</td>
-                <td><input id ="erregistratu" type="button" value="Erregistratu" title="Sakatu baino lehen eremu guztiak beterik egon behar dira" onclick="datuakKonprobatu()" ></td>                
+                <td><input name="erabIzena" id="erabIzena" type="text"  placeholder="Erabiltzaile Izena" title="Erabiltzaile izena sartu. ADB: eneko05"required/></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input id="pasahitza" type="password" name="pasahitza" placeholder="Pasahitza Sartu"  title="Zure pasahitza sartu." required></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input id="pasahitzaBer" type="password" name="pasahitzaBer" placeholder="Pasahitza Berretsi" title="Pasahitza berriz ere idatzi." required></td>
+                <td>&nbsp;</td>
+            </tr>
+            <tr>
+                <td>&nbsp;</td>
+                <td><input id ="erregistratu" type="submit" name="erregistratu" value="erregistratu" title="Sakatu baino lehen eremu guztiak beterik egon behar dira" onclick=datuakKonprobatu()></td>                
                 <td>&nbsp;</td>
             </tr>
         </table>

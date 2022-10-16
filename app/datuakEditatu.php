@@ -7,13 +7,12 @@
 
     if(isset($_POST['aldatu']))
     {
-
         $erabIzena = $_POST['erab'];
         $pass = $_POST['pasahitz'];
 
         // Begiratzen dugu ea erabiltzailea eta pasahitza ondo sartu dituen...
 
-        $sql = "SELECT * FROM `Erabiltzaileak` WHERE `erabIz` = '$erabIzena'"; // Bilatzen dugu erabiltzailea DB-an.
+        $sql = "SELECT * FROM `Erabiltzaileak` WHERE `ErabId` = '$erabIzena'"; // Bilatzen dugu erabiltzailea DB-an.
         $query = mysqli_query($con,$sql);
         $nr = mysqli_num_rows($query);
         $row = mysqli_fetch_array($query); // Ez badago, $row null, bestela array bat izango da datuekin.
@@ -22,31 +21,23 @@
         {
             echo "Erabiltzaile hori ez dago datu basean, txarto sartu duzu.";
         }
-        else{ // Erabiltzailea ondo sartu du, begiratuko dugu ea pasahitza ondo sartu duen.
-            if (password_verify($pass, $row['pasahitza'])) // Hemendik pasatzen bada, esan nahi du erabiltzailea eta pasahitza ondo daudela.
-            {
-                // Datuak aldatuko ditugu.
-                // UPDATE agenda SET telefono='662142223' , email='albesanch@mimail.com' WHERE nombre='Alberto Sanchez'
-                // Falta hacer el update aqui
+        else{   
                 $iz = $_POST['izena'];
                 $mail = $_POST['emaila'];
-                $sql = "UPDATE `Erabiltzaileak` SET Izen Abizena='$iz', Email='$mail' WHERE `erabIz` = '$erabIzena'";
-                if(mysqli_query($con,$sql)) // Ondo exekutatu bada hemen sartuko da.
-                {
-                    echo "ZURE DATUAK ONDO ALDATU DIRA!!";
-                }else
-                {
-                    echo "ERROREA";
-                }
+                $sql = "UPDATE `Erabiltzaileak` SET IzenAbizena='$iz', Email='$mail' WHERE `ErabId` = '$erabIzena'";
+            if(mysqli_query($con,$sql)) // Ondo exekutatu bada hemen sartuko da.
+            {
+                echo "ZURE DATUAK ONDO ALDATU DIRA!!";
+            }else
+            {
+                echo "ERROREA";
             }
         }
+    }
 
-        $query = "SELECT * FROM Erabiltzaileak where erabIz ='$erabIzena'";
+        $query = "SELECT * FROM Erabiltzaileak where ErabId ='$erabIzena'";
         $result = mysqli_query($con, $query);
-    
-    
-        //if($result-> num_rows > 0){
-            
+                
         //Datuak gorde
         $row = mysqli_fetch_array($result);
         $nan = $row["nan"];
@@ -56,10 +47,6 @@
         $jdat =  $row["jaioData"];
         $emaila = $row["emaila"];
         $erabIzena= $row['erabIz'];
-
-    }
-    
-	//}
 ?>
 
 <!DOCTYPE html>
@@ -79,8 +66,6 @@
 </head>
 
 <script type=“text/javascript” src="script2.js" ></script>
-
-
 
     <!-- Web Orriaren gorputza-->
 <body background="banner.jpg">

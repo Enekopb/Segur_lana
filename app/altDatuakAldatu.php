@@ -44,15 +44,6 @@
 
 <script type=“text/javascript” src="script2.js" ></script>
 
-
-<!--<div class="irudia">
-    <img src="https://media.istockphoto.com/photos/blue-book-picture-id1281955543?b=1&k=20&m=1281955543&s=170667a&w=0&h=ZmwacrjQewEU3RqJLYufA-Bi7JVOI2JgcB8X0o7vPeI=" alt="" width="300" height="200">
-</div>
-
-<div class="content">-->
-
-
-
     <!-- Web Orriaren gorputza-->
 <body background="Liburuak.webp">
     <div class="inputak">
@@ -71,7 +62,7 @@
 
             <tr>
                 <td>&nbsp;</td>
-                <td><p style="background-color: lightblue"><strong> Hemen altzari baten datuak editatu edo datu basera sartu dezakezu. </strong></p></td>
+                <td><p style="background-color: lightblue"><strong> Hemen altzari baten datuak editatu, datu basera sartu edo ezabatu dezakezu. </strong></p></td>
                 <td>&nbsp;</td>
             </tr>
             <tr>
