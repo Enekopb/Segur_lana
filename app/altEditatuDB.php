@@ -143,7 +143,7 @@
             <table>
                 <tr>
                     <td>&nbsp;</td>
-                    <td><input id="bueltatuBot" type="button" name="bueltatuBot" value="Bueltatu" onclick="location.href='erabileremu.php'"/></td>
+                    <td><input id="bueltatuBot" type="button" name="bueltatuBot" value="Bueltatu" onclick="location.href='altDatuakAldatu.php'"/></td>
                     <td>&nbsp;</td>
                 </tr>
             </table>
