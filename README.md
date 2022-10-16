@@ -1,19 +1,13 @@
+## ALTZAIRU DENDA WEB SISTEMA
 
-# Docker LAMP
-Linux + Apache + MariaDB (MySQL) + PHP 7.2 on Docker Compose. Mod_rewrite enabled by default.
+Taldekideak: **Eneko Perez**, **Eneko Basauri** eta **Aimar Larrazabal**.
 
-## Instructions
+_DOCKER BIDEZ HEDATZEKO INSTRUKZIOAK:_
 
-Enter the following command to start your containers:
-```bash
-$ docker-compose up -d
-```
+    1. Proiektuaren karpeta barruan kokatu terminalaren bidez (Segur_lana-master barruan).
+    2. Behin barruan, docker build -t="web" . komandoa exekutatu.
+    3. Behin aurreko komando amaituta, docker-compose up komandoa exekutatu.
+    4. PHPMyAdmin-en (http://localhost:8890), datu basea inportatu lan karpetako database.sql fitxategia hautatuz.
+    5. Aurreko lau pausoak egindakoan, http://localhost:81 helbidean sartuz gero web orria agertuko da, index.php fitxategia.
+    6. Web orriarekin amaitutakoan, beste terminal bat zabaldu eta docker-compose down komando exekutatu.
 
-To stop them, use this:
-```bash
-$ docker-compose stop
-```
-
-Feel free to make pull requests and help to improve this.
-
-If you are looking for phpMyAdmin, take a look at [this](https://github.com/celsocelante/docker-lamp/issues/2).
