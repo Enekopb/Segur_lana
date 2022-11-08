@@ -69,6 +69,21 @@ INSERT INTO `Altzariak`(`IdProduktu`, `Izena`, `Kolorea`, `Mota`, `Prezioa`, `Ta
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `login`
+--
+
+CREATE TABLE `login` (
+`ErabId`varchar(30) NOT NULL,
+`Pasahitza` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `login`
+--
+
+-- --------------------------------------------------------
+
+--
 -- Índices para tablas volcadas
 --
 
@@ -84,7 +99,11 @@ ALTER TABLE `Erabiltzaileak`
 ALTER TABLE `Altzariak`
   ADD PRIMARY KEY (`IdProduktu`);
 
-
+--
+-- Indices de la tabla `Erabiltzaileak`
+--
+ALTER TABLE `login`
+  ADD PRIMARY KEY (`ErabId`);
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
