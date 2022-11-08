@@ -3,29 +3,39 @@
     session_start();
 
     //POSTeko aldagaiak definitu
-    $izena = $_POST['izena'];
-    $nan = $_POST['nan'];
-    $jaiodata = $_POST['jaiodata'];
-    $telefonoa = $_POST['telefonoa'];
-    $email = $_POST['email'];
-    $erabIzena = $_POST['erabIzena'];
-    $pasahitza = $_POST['pasahitza'];
+    
+    $pasahitza2 = $_POST['pasahitza'];
     $pasahitzaBer = $_POST['pasahitzaBer'];
     
     if(isset($_POST['erregistratu'])) // 'Erregistratu' botoia zapaldu bada
     {
 
-        if($pasahitza == $pasahitzaBer)
+        if($pasahitza2 == $pasahitzaBer)
         {       
-            $sql = "INSERT INTO `Erabiltzaileak`(`NAN`, `Pasahitza`, `IzenAbizena`, `TelefonoZenbakia`, `JaiotzeData`, `Email`, `ErabId`) VALUES ('$nan', '$pasahitza', '$izena', '$telefonoa', '$jaiodata', '$email', '$erabIzena')";
-            if (mysqli_query($con, $sql))
+            //prepare and bind
+            $stmt = $con->prepare("INSERT INTO Erabiltzaileak (NAN, Pasahitza, IzenAbizena, TelefonoZenbakia, JaiotzeData, Email, ErabId) VALUES (?, ?, ?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssisss", $nan, $pasahitza, $izena, $telefonoa, $jaiodata, $email, $erabIzena);
+
+            //set parameters and execute
+            $nan = $_POST['nan'];
+            $pasahitza = $_POST['pasahitza'];
+            $izena = $_POST['izena'];
+            $telefonoa = $_POST['telefonoa'];
+            $jaiodata = $_POST['jaiodata'];
+            $email = $_POST['email'];
+            $erabIzena = $_POST['erabIzena'];
+            $bool = $stmt->execute();
+
+            if($bool)
             { // arrakasta badu sententzia, hemen sartuko da
                 // hemen sartu behar ditugu datuak log taulan (arrakastatsua bai)
                 header("Location: http://localhost:81/login2.php");
                 exit;
             }else{
-                echo '<script language="javascript">alert("ERROREA: Sartutako erabiltzailea existitzen da, saiatu beste batekin!!");</script>'; 
+                echo '<script language="javascript">alert("ERROREA: Sartutako erabiltzailea existitzen da edo datuak txarto sartu dituzu, saiatu beste batekin!!");</script>'; 
             }
+            $stmt->close();
+            $con->close();
         }
     }
     
