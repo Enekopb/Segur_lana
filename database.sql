@@ -74,7 +74,8 @@ INSERT INTO `Altzariak`(`IdProduktu`, `Izena`, `Kolorea`, `Mota`, `Prezioa`, `Ta
 
 CREATE TABLE `login` (
 `ErabId`varchar(30) NOT NULL,
-`Pasahitza` varchar(20) NOT NULL
+`Pasahitza` varchar(20) NOT NULL, 
+`saiaKop` int NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
