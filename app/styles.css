@@ -1,0 +1,41 @@
+/* Hemen index.html-ren estiloa eta alde bisuala landuko eta difinituko da */
+
+body{
+  background: linear-gradient(rgba(5,7,12,0.75), rgba(5,7,12,0.75)), url("./banner.jpg");
+  min-height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.content {
+  max-width: 350px;
+  margin: auto;
+}
+
+.php {
+  background-color: rgb(88, 144, 216);
+  border: 2px solid black;
+  border-radius: 5px;
+  position: center;
+  max-width: 600px;
+  margin: auto;
+}
+p{
+  color:black;
+}
+.inputak {
+  background-color: rgb(88, 144, 216);
+  border: 2px solid black;
+  color:whitesmoke;
+  border-radius: 5px;
+  position: center;
+}
+.botoiak {
+  background-color: rgb(88, 144, 216);
+  border: 2px solid black;
+  color: whitesmoke;
+  border-radius: 5px;
+  position: center;
+}
+
